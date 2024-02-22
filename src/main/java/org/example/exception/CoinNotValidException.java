@@ -1,7 +1,7 @@
 package org.example.exception;
 
-public class CoinNotYetValidException extends Exception{
-    public CoinNotYetValidException(String message) {
+public class CoinNotValidException extends Exception{
+    public CoinNotValidException(String message) {
         super (message);
     }
 }
