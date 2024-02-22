@@ -13,6 +13,7 @@ public class VendingMachine {
     private ArrayList<Integer> balance = new ArrayList<>();
     private Product selectedProduct;
     private Boolean selected= false;
+    private int userBalance;
 
     Scanner sc = new Scanner(System.in);
     public ArrayList<Integer> getBalance() {
@@ -54,14 +55,8 @@ public class VendingMachine {
 
     public void cancelRequest() {
         if (selectedProduct != null) {
-            System.out.println("Are u sure! Y/N");
-            String resp = sc.nextLine();
-            if (resp.equals("y") || resp.equals("yes")) {
                 selected = !selected;
-            }
-        } else {
-            System.out.println("Vous n'avez selectionné aucun produit");
-
+                balance.remove(Integer.valueOf(userBalance));
         }
     }
 
@@ -119,6 +114,8 @@ public class VendingMachine {
     public void insertCoin(int coin)throws CoinNotValidException {
        if(isValidCoin(coin)){
           balance.add(coin);
+          userBalance =coin;
+
        }
        else{ throw new CoinNotValidException("Coin is not valide!");
 
