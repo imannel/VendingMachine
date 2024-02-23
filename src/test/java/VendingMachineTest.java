@@ -1,6 +1,7 @@
 import org.example.Product;
 import org.example.VendingMachine;
 import org.example.exception.CoinNotValidException;
+import org.example.exception.ProductNotAvailableException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -45,7 +46,34 @@ public class VendingMachineTest {
     @Test
     public void testSelectProduct(){
         VendingMachine vm = new VendingMachine();
+        assertEquals("water", vm.selectProduct("water").getName());
 
+
+    }
+    @Test
+    public void testSelectProductShouldThrowException(){
+        VendingMachine vm = new VendingMachine();
+        assertThrows(ProductNotAvailableException.class, ()->vm.selectProduct("pringls"));
+
+
+    }
+    @Test
+    public void testCancelRequest(){
+        VendingMachine vm = new VendingMachine();
+        vm.selectProduct("water");
+        vm.insertCoin(5);
+        vm.cancelRequest();
+        assertFalse(vm.getSelected());
+        assertTrue(vm.getBalance().isEmpty());
+
+    }
+    @Test
+    public void testBuyProduct(){
+        VendingMachine vm = new VendingMachine();
+        vm.insertCoin(5);
+        vm.selectProduct("water");
+        String result=vm.buyProduct(10);
+        assertEquals("product is water and remain is 5",result);
 
     }
 }

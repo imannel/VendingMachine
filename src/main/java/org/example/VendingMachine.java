@@ -12,6 +12,11 @@ public class VendingMachine {
     private int[] coins;
     private ArrayList<Integer> balance = new ArrayList<>();
     private Product selectedProduct;
+
+    public Boolean getSelected() {
+        return selected;
+    }
+
     private Boolean selected= false;
     private int userBalance;
 
@@ -22,11 +27,10 @@ public class VendingMachine {
 
     public VendingMachine() {
         products = new HashMap<>();
-        products.put("water", new Product(5, 10));
-        products.put("coca", new Product(7, 10));
-        products.put("twix", new Product(10, 10));
-        products.put("bueno", new Product(12, 10));
-
+        products.put("water", new Product("water",5, 10));
+        products.put("coca", new Product("coca",7, 10));
+        products.put("twix", new Product("twix",10, 10));
+        products.put("bueno", new Product("bueno",12, 10));
         coins = new int[]{1, 2, 5, 10};
 
 
@@ -40,12 +44,12 @@ public class VendingMachine {
         }
       return false;
     }
-
-    public Product selectProduct(Product product)throws ProductNotAvailableException {
-        String productName= product.getName();
+    //id
+    public Product selectProduct(String productName)throws ProductNotAvailableException {
         if (products.containsKey(productName.toLowerCase())) {
             selected = true;
-            return product;
+            selectedProduct=products.get(productName);
+            return selectedProduct;
         }
 
          throw new ProductNotAvailableException("product not available !");
@@ -60,22 +64,22 @@ public class VendingMachine {
         }
     }
 
-    public void buyProduct(int coin) throws CoinNotValidException,NoChangeException {
+    public String buyProduct(int coin)  {
 
 
+        int remain=0;
         if (selectedProduct != null) {
                 insertCoin(coin);
                 if (coin > selectedProduct.getCost()){
-                getRemain(coin);
+                remain= getRemain(coin);
                 }
-
-                System.out.println("Payment accepted. Please take your product: " + selectedProduct.getName());
                 selected = false;
+                return("product is "+selectedProduct.getName()+" and remain is "+ remain);
+
+
             }
-          else
-        {
-            System.out.println("Please select a product first.");
-        }
+        throw new RuntimeException("Please select product first");
+
 
     }
 

@@ -1,7 +1,10 @@
 package org.example;
 
 public class Product {
+
+
     public Product(String name, int cost, int quantity) {
+
         this.name = name;
         this.cost = cost;
         this.quantity = quantity;
