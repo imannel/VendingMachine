@@ -58,6 +58,17 @@ public class VendingMachineTest {
 
     }
     @Test
+    public void testSelectProductShouldThrowExceptionQuantity(){
+        VendingMachine vm = new VendingMachine();
+        vm.selectProduct("water");
+        vm.buyProduct(5);
+
+
+        assertThrows(ProductNotAvailableException.class, ()->vm.selectProduct("water"));
+
+
+    }
+    @Test
     public void testCancelRequest(){
         VendingMachine vm = new VendingMachine();
         vm.selectProduct("water");

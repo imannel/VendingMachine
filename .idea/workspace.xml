@@ -78,16 +78,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendingMachineTest.testCancelRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="vendingMachine" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendingMachineTest" />
-      <option name="METHOD_NAME" value="testCancelRequest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="VendingMachineTest.testSelectProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="vendingMachine" />
       <option name="PACKAGE_NAME" value="" />
@@ -108,13 +98,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="VendingMachineTest.testSelectProductShouldThrowExceptionQuantity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="vendingMachine" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="VendingMachineTest" />
+      <option name="METHOD_NAME" value="testSelectProductShouldThrowExceptionQuantity" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.VendingMachineTest" />
+        <item itemvalue="JUnit.VendingMachineTest.testSelectProductShouldThrowExceptionQuantity" />
+        <item itemvalue="JUnit.VendingMachineTest.testBuyProduct" />
         <item itemvalue="JUnit.VendingMachineTest.testSelectProductShouldThrowException" />
         <item itemvalue="JUnit.VendingMachineTest.testSelectProduct" />
-        <item itemvalue="JUnit.VendingMachineTest.testBuyProduct" />
-        <item itemvalue="JUnit.VendingMachineTest.testCancelRequest" />
       </list>
     </recent_temporary>
   </component>
@@ -128,7 +128,7 @@
       <updated>1708593698935</updated>
       <workItem from="1708593700121" duration="32370000" />
       <workItem from="1708636249148" duration="8060000" />
-      <workItem from="1708674142109" duration="506000" />
+      <workItem from="1708674142109" duration="2528000" />
     </task>
     <servers />
   </component>

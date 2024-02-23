@@ -27,7 +27,7 @@ public class VendingMachine {
 
     public VendingMachine() {
         products = new HashMap<>();
-        products.put("water", new Product("water",5, 10));
+        products.put("water", new Product("water",5,1));
         products.put("coca", new Product("coca",7, 10));
         products.put("twix", new Product("twix",10, 10));
         products.put("bueno", new Product("bueno",12, 10));
@@ -44,17 +44,22 @@ public class VendingMachine {
         }
       return false;
     }
-    //id
+
     public Product selectProduct(String productName)throws ProductNotAvailableException {
-        if (products.containsKey(productName.toLowerCase())) {
-            selected = true;
-            selectedProduct=products.get(productName);
-            return selectedProduct;
+
+        if (!products.containsKey(productName.toLowerCase()) ) {
+            throw new ProductNotAvailableException("product not available !");
         }
+        int productQuantity=products.get(productName).getQuantity();
+        if(productQuantity<=0)
+            throw new ProductNotAvailableException("product not available !");
+         else  { selected = true;
+            selectedProduct = products.get(productName);
 
-         throw new ProductNotAvailableException("product not available !");
 
 
+        }
+        return selectedProduct;
     }
 
     public void cancelRequest() {
@@ -74,6 +79,7 @@ public class VendingMachine {
                 remain= getRemain(coin);
                 }
                 selected = false;
+                 selectedProduct.setQuantity( selectedProduct.getQuantity()-1);
                 return("product is "+selectedProduct.getName()+" and remain is "+ remain);
 
 
